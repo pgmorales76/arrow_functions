@@ -152,13 +152,16 @@ let message = (name) => `Hello, ${name}!`;
 // TODO: Uncomment the following line of code to see the output in the browser console
 console.log(message('Allie'));
 
-
+// This looks like the old way of creating an object literal w/in a constructor function
+// Arrow functions cannot be used as constructors and will throw an error when called with new.
+// They also do not have a prototype property.
 let Student = function (name, age, hometown) {
     this.name = name;
     this.age = age;
     this.hometown = hometown;
 };
 
+// An instance of the Student constructor function
 let joe = new Student('Joe Schmoe', 100, 'Anytown, USA');
 
 // TODO: Uncomment the following line of code to see the output in the browser console
@@ -168,14 +171,14 @@ console.log(joe);
 // TODO: After viewing the previous console.log(), return the code to a working state.
 
 
-
+// This looks like a Constructor function, with some properties in dot notation
 Student.prototype.greeting = function () {
     return `Hi, my name is ${this.name}`;
 };
 
 // TODO: Uncomment the following line of code to see the output in the browser console
 // Note that the arrow function will cause this method to break!
-// console.log(joe.greeting());
+console.log(joe.greeting());
 
 // TODO: After viewing the previous console.log(), return the code to a working state.
 
@@ -186,7 +189,7 @@ Student.courseName = function () {
 };
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-// console.log(Student.courseName());
+console.log(Student.courseName());
 
 
 
@@ -197,17 +200,20 @@ Student.prototype.scope = function () {
 };
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-// joe.scope();
+joe.scope();
 
 Student.prototype.scopeArrow = () => console.log(this);
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-// joe.scopeArrow();
+joe.scopeArrow();
 
 // TODO: Write a COMMENT below to answer the following questions.
 // 1. What is "this" when joe.scope() is invoked?
-//
+//  The scope of a Constructor function's instance - line 165. Put differently, the Student object.
 // 2. What is "this" when joe.scopeArrow() is invoked?
-//
+//  The Window object. The entirety of what the user interacts with.
 // 3. Explain why "this" is different when an arrow function is used.
-//
+//  Arrow functions don't have their own bindings to `this`. In arrow functions, this retains
+// the value of the enclosing lexical context's this. In other words, when evaluating an arrow
+// function's body, the language does not create a new this binding.
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this
