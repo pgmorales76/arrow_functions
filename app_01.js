@@ -107,14 +107,19 @@ console.log('Hello from the new object function', newObject(['hi', 'hello', 'are
 // Write your solutions on a single line wherever possible.
 
 
-
+// When we have multiple parameters, they must be wrapped in parentheses
+// If the code block contains a single line of code, we can write everything on one line
+// We no longer need the curly braces and the return is implicit
+// Without an arrow function, we need to explicitly type "return"
 let sum = (a, b, c, d) => a + b + c + d;
 
 
 // TODO: Uncomment the following line of code to see the output in the browser console
 console.log(sum(1, 2, 3, 4));
 
-
+// With an arrow function, we need to wrap our object in parentheses
+// What if we have multiple lines of code?
+// We need to use a code block
 let objectLit = () =>
 ({
     key1: 'value1',
@@ -126,8 +131,11 @@ let objectLit = () =>
 // TODO: Uncomment the following line of code to see the output in the browser console
 console.log(objectLit());
 
-
-let sumAndProduct = (a, b) => {
+// With an arrow function, we need to wrap our object in parentheses (not an object, here!)
+// What if we have multiple lines of code?
+// We need to use a code block
+let sumAndProduct = (a, b) => 
+{
     let sum = a + b;
     let product = a * b;
     return [sum, product];
